@@ -1,4 +1,3 @@
-package proyecto_unidad2;
 import java.util.Scanner;
 
 public class ZooSystem {
