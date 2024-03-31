@@ -12,6 +12,17 @@ public class Zoo {
     public Zoo(){
 
     }
+    
+
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+
+    public ArrayList<Visitor> getVisitors() {
+        return visitors;
+    }
+
 
     public void addEmployee(){
         System.out.println("Ingrese el nombre del empleado: ");
@@ -79,5 +90,133 @@ public class Zoo {
             }
         } while(repetido);
         return id;
+    }
+
+    public void modifyEmployee(){
+        System.out.println("Ingrese el ID del empleado: ");
+        int id = readNumbers.nextInt();
+
+        for(Employee employee : employees){
+            if(employee.getId()==id){
+                System.out.println("+---------------------+");
+                System.out.println("|   MENU MODIFICAR    |");
+                System.out.println("+---------------------+");
+                System.out.println("| OPCION | DESCRIPCION|");
+                System.out.println("+---------------------+");
+                System.out.println("|   1    | Nombre     |");
+                System.out.println("|   2    | Apellidos  |");
+                System.out.println("|   3    | Fecha de nacimiento (dd/mm/aaaa) |");
+                System.out.println("|   4    | Fecha de ingreso (dd/mm/aaaa) |");
+                System.out.println("|   5    | RFC        |");
+                System.out.println("|   6    | CURP       |");
+                System.out.println("|   7    | Salario    |");
+                System.out.println("|   8    | Horario de trabajo |");
+                System.out.println("|   9    | Rol        |");
+                System.out.println("+---------------------+");
+                System.out.print("Elige una opción: ");
+                int optionModify = readNumbers.nextInt();
+
+                switch (optionModify) {
+                    case 1:
+                    System.out.println("Ingrese el nombre del empleado: ");
+                        String nameModif = readString.nextLine();
+                        employee.setName(nameModif);
+                        break;
+                    case 2:
+                    System.out.println("Ingrese los apellidos del empleado: ");
+                        String lastNameModif = readString.nextLine();
+                        employee.setLastName(lastNameModif);
+                        break;
+                    case 3:
+                    System.out.println("Fecha de nacimiento (dd/mm/aaaa): ");
+                        String birthDateModif = readString.nextLine();
+                        employee.setBirthDate(birthDateModif);
+                        break;
+                    case 4:
+                    System.out.println("Fecha de ingreso (dd/mm/aaaa): ");
+                        String entryDateModif = readString.nextLine();
+                        employee.setEntryDate(entryDateModif);
+                        break;
+                    case 5:
+                    System.out.println("Ingrese el RFC: ");
+                        String rfcModif = readString.nextLine();
+                        employee.setRfc(rfcModif);
+                        break;
+                    case 6:
+                    System.out.println("Ingrese la CURP: ");
+                        String curpModif = readString.nextLine();
+                        employee.setCurp(curpModif);
+                        break;
+                    case 7:
+                    System.out.println("Ingrese el salario: ");
+                        double salaryModif = readNumbers.nextDouble();
+                        employee.setSalary(salaryModif);
+                        break;
+                    case 8:
+                    System.out.println("Ingrese el horario de trabajo (hh:mm - hh:mm): ");
+                        String workingHoursModif = readString.nextLine();
+                        employee.setWorkingHours(workingHoursModif);
+                        break;
+                    case 9:
+                    System.out.println("Ingrese el rol del empleado: ");
+                        String roleModif = readString.nextLine();
+                        employee.setRole(roleModif);
+                        break;
+
+                }
+            }
+        }
+    }
+
+    public void modifyVisitor(){
+        System.out.println("Ingrese el ID del visitante: ");
+        int id = readNumbers.nextInt();
+
+        for(Visitor visitor : visitors){
+            if(visitor.getId()==id){
+                System.out.println("+---------------------+");
+                System.out.println("|   MENU MODIFICAR    |");
+                System.out.println("+---------------------+");
+                System.out.println("| OPCION | DESCRIPCION|");
+                System.out.println("+---------------------+");
+                System.out.println("|   1    | Nombre     |");
+                System.out.println("|   2    | Apellidos  |");
+                System.out.println("|   3    | Fecha de nacimiento (dd/mm/aaaa) |");
+                System.out.println("|   4    | Fecha de registro (dd/mm/aaaa) |");
+                System.out.println("|   5    | CURP       |");
+                System.out.println("+---------------------+");
+                System.out.print("Elige una opción: ");
+                int optionModify = readNumbers.nextInt();
+
+                switch (optionModify) {
+                    case 1:
+                    System.out.println("Ingrese el nombre del visitante: ");
+                        String nameVisitorModif = readString.nextLine();
+                        visitor.setName(nameVisitorModif);
+                        break;
+                    case 2:
+                    System.out.println("Ingrese los apellidos del visitante: ");
+                        String lastNameVisitorModif = readString.nextLine();
+                        visitor.setLastName(lastNameVisitorModif);
+                        break;
+                    case 3:
+                    System.out.println("Fecha de nacimiento (dd/mm/aaaa): ");
+                        String birthDateVisitorModif = readString.nextLine();
+                        visitor.setBirthDate(birthDateVisitorModif);
+                        break;
+                    case 4:
+                    System.out.println("Fecha de registro (dd/mm/aaaa): ");
+                        String registerDateVisitorModif = readString.nextLine();
+                        visitor.setRegisterDate(registerDateVisitorModif);
+                        break;
+                    case 5:
+                    System.out.println("Ingrese la CURP: ");
+                    String curpVisitorModif = readString.nextLine();
+                        visitor.setCurp(curpVisitorModif);
+                        break;
+
+                }
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ZooSystem {
     private final String PASSWORD = "ZooManager";
     private Scanner scanner = new Scanner(System.in);
-
+    Zoo zoo = new Zoo();
     public void ExecuteProgram() {
         boolean isCorrectPassword = false;
 
@@ -40,10 +40,57 @@ public class ZooSystem {
 
             switch (option) {
                 case 1:
-                System.out.println("xd");
+                System.out.println("+---------------------+");
+                System.out.println("|   MENU REGISTRAR    |");
+                System.out.println("+---------------------+");
+                System.out.println("| OPCION | DESCRIPCION|");
+                System.out.println("+---------------------+");
+                System.out.println("|   1    | Empleado   |");
+                System.out.println("|   2    | Visitante  |");
+                System.out.println("|   3    | Animal     |");
+                System.out.println("+---------------------+");
+                System.out.print("Elige una opción: ");
+                int optionRegister = scanner.nextInt();
+
+                    switch (optionRegister) {
+                        case 1:
+                            zoo.addEmployee();
+                            break;
+                        case 2:
+                            zoo.addVisitor();
+                            break;
+                        case 3:
+                        System.out.println("Metodo agregar animal");
+                            break;
+                    }
+
                     break;
                 case 2:
-                System.out.println("xd");
+                
+                System.out.println("+---------------------+");
+                System.out.println("|   MENU MODIFICAR    |");
+                System.out.println("+---------------------+");
+                System.out.println("| OPCION | DESCRIPCION|");
+                System.out.println("+---------------------+");
+                System.out.println("|   1    | Empleado   |");
+                System.out.println("|   2    | Visitante  |");
+                System.out.println("|   3    | Animal     |");
+                System.out.println("+---------------------+");
+                System.out.print("Elige una opción: ");
+                int optionModify = scanner.nextInt();
+
+                    switch (optionModify) {
+                        case 1:
+                            zoo.modifyEmployee();
+                            break;
+                        case 2:
+                            zoo.modifyVisitor();
+                            break;
+                        case 3:
+                        System.out.println("Metodo modificar animal");
+                            break;
+                    }
+
                     break;
                 case 3:
                 System.out.println("xdx");
