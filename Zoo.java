@@ -6,8 +6,9 @@ public class Zoo {
     Random ran = new Random();
     Scanner readString = new Scanner(System.in);
     Scanner readNumbers = new Scanner(System.in);
-    ArrayList<Employee> employees = new ArrayList<>();
-    ArrayList<Visitor> visitors = new ArrayList<>();
+    private ArrayList<Employee> employees = new ArrayList<>();
+    private ArrayList<Visitor> visitors = new ArrayList<>();
+    private ArrayList<Visit> visits = new ArrayList<>();
 
     public Zoo(){
 
@@ -218,5 +219,110 @@ public class Zoo {
                 }
             }
         }
+    }
+
+    public void registerVisit(){
+        if(thereAreGuides()){
+            if(visitors.isEmpty()){
+                System.out.println("No se han añadido visitantes.");
+            }
+            else{
+                System.out.print("Ingrese la fecha de la visita: ");
+                String visitDate = readString.nextLine();
+
+                Employee guideInCharge = null;
+                boolean guideFound = false;
+                do{
+                    System.out.print("Ingrese el ID del guía a cargo: ");
+                    int idGuide = readNumbers.nextInt();
+
+                    for(Employee employee : employees){
+                        if(employee.getId() == idGuide){
+                            if(employee.isGuide()){
+                                employee.setIsInAVisit(true);
+                                guideFound = true;
+                                guideInCharge = employee;
+                                System.out.println("Guía añadido éxitosamente.");
+                            }
+                        }
+                    }
+
+                    if(!guideFound){
+                        System.out.println("No se ha encontrado ningún guía con ese ID. Intente nuevamente.");
+                    }
+                } while(!guideFound);
+
+                boolean finish = false;
+                ArrayList<Visitor> listVisitors = new ArrayList<>();
+                int numberOfVisitors = 0;
+                do{
+                    boolean visitorFound = false;
+                    do{
+                        System.out.print("Ingrese el ID del visitante a agregar: ");
+                        int idVisitor = readNumbers.nextInt();
+                        for(Visitor visitor : visitors){
+                            if(visitor.getId() == idVisitor){
+                                if(listVisitors.isEmpty()){
+                                    visitorFound = true;
+                                    listVisitors.add(visitor);
+                                    visitor.setIsInAVisit(true);
+                                    numberOfVisitors++;
+                                    System.out.println("Visitante añadido con éxito.");
+                                }
+                                else{
+                                    boolean repeated = false;
+                                    for(Visitor visitorListed : listVisitors){
+                                        if(visitorListed.getId() == idVisitor){
+                                            repeated = true;
+                                            System.out.println("Ya se ha agregado este visitante a la visita.");
+                                        }
+                                    }
+                                    if(!repeated){
+                                        visitorFound = true;
+                                        listVisitors.add(visitor);
+                                        visitor.setIsInAVisit(true);
+                                        numberOfVisitors++;
+                                        System.out.println("Visitante añadido con éxito.");
+                                    }
+                                }
+                            }
+                        }
+                        if(!visitorFound){
+                            System.out.println("No se ha podido encontrar ese visitante.");
+                        }
+                    } while(!visitorFound);
+                    boolean validAnswer = false;
+                    do{
+                        System.out.print("¿Desea agregar más visitantes? [S/N]: ");
+                        char answerAddVisitors = readString.nextLine().charAt(0);
+                        if(answerAddVisitors == 'N' || answerAddVisitors == 'n'){
+                            finish = true;
+                            validAnswer = true;
+                        }
+                        else if(answerAddVisitors == 'S' || answerAddVisitors == 's'){
+                            validAnswer = true;
+                        }
+                        else{
+                            System.out.println("Ingrese una opción válida");
+                        }
+                    } while(!validAnswer);
+                } while(!finish);
+
+                visits.add(new Visit(visitDate, guideInCharge, listVisitors, numberOfVisitors));
+            }
+        }
+        else{
+            System.out.println("No se han añadido empleados con el rol de guía.");
+        }
+    }
+
+    public boolean thereAreGuides(){
+        boolean thereAreGuides = false;
+        for(Employee employee : employees){
+            if(employee.isGuide()){
+                thereAreGuides = true;
+            }
+        }
+        return thereAreGuides;
     }
 }

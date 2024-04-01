@@ -3,6 +3,7 @@ public class Employee{
     private double salary;
     private String registerDate,name,lastName,birthDate,curp;
     private int id;
+    private boolean isInAVisit = false;
 
     public Employee(String name, String lastName, String birthDate, String entryDate, String rfc, String curp, double salary, String workingHours, String role, int id){
         this.name = name;
@@ -15,6 +16,7 @@ public class Employee{
         this.salary = salary;
         this.workingHours = workingHours;
         this.role = role;
+        System.out.println(id);//////////////SOLO ES PARA PROBAR, HAY Q BORRARLO DESPUÉS XD
     }
 
     public String getEntryDate() {
@@ -105,5 +107,20 @@ public class Employee{
         this.id = id;
     }
 
-    
+    public boolean isGuide(){
+        if(role.toLowerCase().equals("guia") || role.toLowerCase().equals("guía")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void setIsInAVisit(boolean isInAVisit){
+        this.isInAVisit = isInAVisit;
+    }
+
+    public boolean getIsInAVisit(){
+        return isInAVisit;
+    }
 }

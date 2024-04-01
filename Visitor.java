@@ -1,7 +1,9 @@
 public class Visitor{
-    private int numberOfVisits;
+    private int numberOfVisits = 0;
     private String registerDate,name,lastName,birthDate,curp;
     private int id;
+    private boolean isAnAdult = false;
+    private boolean isInAVisit = false;
     
 
 
@@ -14,6 +16,7 @@ public class Visitor{
         this.id = id;
         this.numberOfVisits = 0;
         this.registerDate = registerDate;
+        System.out.println(id);//////////////SOLO ES PARA PROBAR, HAY Q BORRARLO DESPUÉS XD
     }
 
     public int getNumberOfVisits() {
@@ -98,5 +101,19 @@ public class Visitor{
         this.id = id;
     }
 
-    
+    public boolean getIsAnAdult(){
+        return isAnAdult;
+    }
+
+    public void setIsAnAdult(boolean isAnAdult){
+        this.isAnAdult = isAnAdult;
+    }
+
+    public void setIsInAVisit(boolean isInAVisit){
+        this.isInAVisit = isInAVisit;
+    }
+
+    public boolean getIsInAVisit(){
+        return isInAVisit;
+    }
 }
