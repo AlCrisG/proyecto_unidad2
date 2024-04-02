@@ -4,6 +4,7 @@ public class Employee{
     private String registerDate,name,lastName,birthDate,curp;
     private int id;
     private boolean isInAVisit = false;
+    private boolean isInAMaintenanceProcess = false;
 
     public Employee(String name, String lastName, String birthDate, String entryDate, String rfc, String curp, double salary, String workingHours, String role, int id){
         this.name = name;
@@ -108,7 +109,7 @@ public class Employee{
     }
 
     public boolean isGuide(){
-        if(role.toLowerCase().equals("guia") || role.toLowerCase().equals("guía")){
+        if(role.toLowerCase().equals("guia")){
             return true;
         }
         else{
@@ -122,5 +123,22 @@ public class Employee{
 
     public boolean getIsInAVisit(){
         return isInAVisit;
+    }
+
+    public boolean hasMaintenanceRole(){
+        if(role.toLowerCase().equals("mantenimiento")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void setIsInAMaintenanceProcess(boolean isInAMaintenanceProcess){
+        this.isInAMaintenanceProcess = isInAMaintenanceProcess;
+    }
+
+    public boolean getIsInAMaintenanceProcess(){
+        return isInAMaintenanceProcess;
     }
 }

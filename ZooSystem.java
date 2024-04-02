@@ -49,6 +49,7 @@ public class ZooSystem {
                 System.out.println("|   2    | Visitante  |");
                 System.out.println("|   3    | Animal     |");
                 System.out.println("|   4    | Visita     |");
+                System.out.println("|   5    | Mantenimiento |");
                 System.out.println("+---------------------+");
                 System.out.print("Elige una opción: ");
                 int optionRegister = scanner.nextInt();
@@ -66,6 +67,11 @@ public class ZooSystem {
                         case 4:
                             zoo.registerVisit();
                             break;
+                        case 5:
+                            zoo.registerMaintenance();
+                            break;
+                        default:
+                            System.out.println("Seleccione una opción válida.");
                     }
 
                     break;

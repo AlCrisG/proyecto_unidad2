@@ -3,13 +3,14 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Zoo {
-    Random ran = new Random();
-    Scanner readString = new Scanner(System.in);
-    Scanner readNumbers = new Scanner(System.in);
+    private Random ran = new Random();
+    private Scanner readString = new Scanner(System.in);
+    private Scanner readNumbers = new Scanner(System.in);
     private ArrayList<Employee> employees = new ArrayList<>();
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visit> visits = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<Maintenance> maintenance = new ArrayList<>();
     private boolean validAnswer = false;
     private boolean hasVaccines = false;
     private int optionModify = 0;
@@ -494,7 +495,7 @@ public class Zoo {
                     int idGuide = readNumbers.nextInt();
 
                     for(Employee employee : employees){
-                        if(employee.getId() == idGuide){
+                        if(employee.getId() == idGuide && employee.isGuide()){
                             if(employee.isGuide()){
                                 employee.setIsInAVisit(true);
                                 guideFound = true;
@@ -581,5 +582,80 @@ public class Zoo {
             }
         }
         return thereAreGuides;
+    }
+
+    public void registerMaintenance(){
+        if(thereAreMaintenanceEmployees()){
+            if(animals.isEmpty()){
+                System.out.println("No se han añadido animales.");
+            }
+            else{
+                System.out.println("Ingrese el ID del empleado a cargo: ");
+                int employeeInChargeId = readNumbers.nextInt();
+                
+                Employee employeeInCharge = null;
+                boolean employeeFoundMaintenance = false;
+
+                do{
+                    for(Employee employee : employees){
+                        if(employee.getId() == employeeInChargeId && employee.hasMaintenanceRole()){
+                            employee.setIsInAMaintenanceProcess(true);
+                            employeeFoundMaintenance = true;
+                            employeeInCharge = employee;
+                            System.out.println("Empleado añadido con éxito.");
+                        }
+                    }
+                    if(!employeeFoundMaintenance){
+                        System.out.println("No se ha encontrado empleado de mantenimiento con ese ID.");
+                    }
+                }while(!employeeFoundMaintenance);
+
+                System.out.println("Ingrese el ID del animal involucrado: ");
+                int animalIdMaintenance = readNumbers.nextInt(); 
+
+                Animal animalMaintenance = null;
+                boolean animalFoundMaintenance = false;
+
+                do{
+                    for(Animal animal : animals){
+                        if(animal.getId() == animalIdMaintenance){
+                            animal.setIsInAMaintenanceProcess(true);
+                            animalFoundMaintenance = true;
+                            animalMaintenance = animal;
+                            System.out.println("Animal añadido con éxito.");
+                        }
+                    }
+                    if(!animalFoundMaintenance){
+                        System.out.println("No se ha encontrado ningún animal con ese ID.");
+                    }
+                } while(!animalFoundMaintenance);
+
+                System.out.println("Ingrese el proceso que se realizó: ");
+                String processName = readString.nextLine();
+
+                System.out.println("Fecha en que se realizó el proceso: ");
+                String date = readString.nextLine();
+
+                System.out.println("Observaciones (Opcional, sino desea añadir ninguna simplemente presione Enter: )");
+                String observations = readString.nextLine();
+
+                maintenance.add(new Maintenance(employeeInCharge, animalMaintenance, processName, date, observations));
+            }
+        }
+        else{
+            System.out.println("No se han añadido empleados con el rol de mantenimiento.");
+        }
+    }
+
+    public boolean thereAreMaintenanceEmployees(){
+        boolean thereAreMaintenanceEmployees = false;
+        
+        for(Employee employee : employees){
+            if(employee.hasMaintenanceRole()){
+                thereAreMaintenanceEmployees = true;
+            }
+        }
+
+        return thereAreMaintenanceEmployees;
     }
 }

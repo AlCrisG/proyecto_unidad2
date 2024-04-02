@@ -8,6 +8,7 @@ public class Animal {
     private double weight;
     private ArrayList<String> diseases = new ArrayList<>();
     private boolean hasVaccines;
+    private boolean isInAMaintenanceProcess = false;
 
     public Animal(String animalType, String birthDate, String arriveDate, double weight, ArrayList<String> diseases, String feedFrequency, String feedType, boolean hasVaccines, int id){
         this.animalType = animalType;
@@ -160,5 +161,13 @@ public class Animal {
 
     public void setHasVaccines(boolean hasVaccines){
         this.hasVaccines = hasVaccines;
+    }
+
+    public void setIsInAMaintenanceProcess(boolean isInAMaintenanceProcess){
+        this.isInAMaintenanceProcess = isInAMaintenanceProcess;
+    }
+
+    public boolean getIsInAMaintenanceProcess(){
+        return isInAMaintenanceProcess;
     }
 }
