@@ -9,6 +9,7 @@ public class Zoo {
     private ArrayList<Employee> employees = new ArrayList<>();
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visit> visits = new ArrayList<>();
+    private ArrayList<Animal> animals = new ArrayList<>();
 
     public Zoo(){
 
@@ -75,6 +76,86 @@ public class Zoo {
         visitors.add(new Visitor(name, lastName, birthDate, curp, registerDate, generateRandomID()));
     }
 
+    public void addAnimal(){
+        System.out.println("Ingrese el tipo de animal: ");
+        String animalType = readString.nextLine();
+
+        System.out.println("Ingrese la fecha de nacimiento del animal (dd/mm/aaaa): ");
+        String birthDate = readString.nextLine();
+
+        System.out.println("Ingrese la fecha de llegada del animal (dd/mm/aaaa): ");
+        String arriveDate = readString.nextLine();
+
+        System.out.println("Ingrese el peso del animal: ");
+        int weight = readNumbers.nextInt();
+
+        ArrayList<String> listDiseases = new ArrayList<>();
+        boolean validAnswer1 = false;
+        do{
+            System.out.println("¿El animal presenta alguna enfermedad? [S/N]: ");
+            char hasDiseases = readString.nextLine().charAt(0);
+            
+            if(hasDiseases == 's' || hasDiseases == 'S'){
+                validAnswer1 = true;
+                boolean validAnswer2 = false;
+                boolean repeat = false;
+                do{
+                        System.out.println("Nombre de la enfermedad: ");
+                        String disease = readString.nextLine();
+                        listDiseases.add(disease);
+                        System.out.println("Enfermedad añadida con éxito.");
+
+                        System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
+                        char hasMoreDiseases = readString.nextLine().charAt(0);
+
+                    do{
+                        if(hasMoreDiseases == 's' || hasMoreDiseases == 'S'){
+                            repeat = true;
+                        }
+                        else if(hasMoreDiseases == 'n' || hasMoreDiseases == 'N'){
+                            repeat = false;
+                        }
+                        else{
+                            System.out.println("Ingrese una opción válida.");
+                        }
+                    } while(!validAnswer2);
+                }while(repeat);
+            }
+            else if(hasDiseases == 'n' || hasDiseases == 'N'){
+                validAnswer1 = true;
+            }
+            else{
+                System.out.println("Ingrese una opción válida.");
+            }
+        } while(!validAnswer1);
+
+        System.out.println("Ingrese la frecuencia de alimentación del animal: ");
+        String feedFrequency = readString.nextLine();
+
+        System.out.println("Ingrese el tipo de alimentación del animal: ");
+        String feedType = readString.nextLine();
+
+        validAnswer1 = false;
+        boolean hasVaccines = false;
+        do{
+            System.out.println("¿Cuenta con vacunas? [S/N]: ");
+            char vaccineAnswer = readString.nextLine().charAt(0);
+
+            if(vaccineAnswer == 'S' || vaccineAnswer == 's'){
+                validAnswer1 = true;
+                hasVaccines = true;
+            }
+            else if(vaccineAnswer == 'N' || vaccineAnswer == 'n'){
+                validAnswer1 = true;
+            }
+            else{
+                System.out.println("Ingrese una opción válida.");
+            }
+        } while(!validAnswer1);
+
+        animals.add(new Animal(animalType, birthDate, arriveDate, weight, listDiseases, feedFrequency, feedType, hasVaccines, generateRandomID()));
+    }
+
     private int generateRandomID(){
         int id = ran.nextInt(100, 9999);
         boolean repetido = false;
@@ -86,6 +167,11 @@ public class Zoo {
             }
             for(Visitor visitor : visitors){
                 if(visitor.getId() == id){
+                    repetido = true;
+                }
+            }
+            for(Animal animal : animals){
+                if(animal.getId() == id){
                     repetido = true;
                 }
             }
@@ -325,4 +411,6 @@ public class Zoo {
         }
         return thereAreGuides;
     }
+
+
 }

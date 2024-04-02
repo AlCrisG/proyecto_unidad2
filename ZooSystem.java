@@ -61,7 +61,7 @@ public class ZooSystem {
                             zoo.addVisitor();
                             break;
                         case 3:
-                            System.out.println("Metodo agregar animal");
+                            zoo.addAnimal();
                             break;
                         case 4:
                             zoo.registerVisit();
