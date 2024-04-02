@@ -100,6 +100,7 @@ public class Zoo {
                 boolean validAnswer2 = false;
                 boolean repeat = false;
                 do{
+                    do{
                         System.out.println("Nombre de la enfermedad: ");
                         String disease = readString.nextLine();
                         listDiseases.add(disease);
@@ -108,11 +109,12 @@ public class Zoo {
                         System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
                         char hasMoreDiseases = readString.nextLine().charAt(0);
 
-                    do{
                         if(hasMoreDiseases == 's' || hasMoreDiseases == 'S'){
+                            validAnswer2 = true;
                             repeat = true;
                         }
                         else if(hasMoreDiseases == 'n' || hasMoreDiseases == 'N'){
+                            validAnswer2 = true;
                             repeat = false;
                         }
                         else{
