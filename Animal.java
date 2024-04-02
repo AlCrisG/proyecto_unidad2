@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Animal {
+    private Scanner readString = new Scanner(System.in);
     private String animalType, birthDate, arriveDate, feedFrequency, feedType;
     private int weight, id;
     private ArrayList<String> diseases = new ArrayList<>();
@@ -57,7 +59,7 @@ public class Animal {
 
     public void getDiseases(){
         if(diseases.isEmpty()){
-            System.out.println("Este animal no presenta enfermedades");
+            System.out.println("Este animal no presenta enfermedades.");
         }
         else{
             System.out.println("+-----ENFERMEDADES----+");
@@ -69,5 +71,93 @@ public class Animal {
         }
     }
 
+    public void setDiseases(int option){
+        boolean diseaseFound = false;
+        switch(option){
+            case 1:
+                if(diseases.isEmpty()){
+                    System.out.println("Este animal no presenta enfermedades.");
+                }
+                else{
+                    System.out.println("Ha elegido cambiar una enfermedad.");
+                    System.out.println("Ingrese el nombre de la enfermedad a cambiar: ");
+                    String diseaseToChange = readString.nextLine();
+                    
+                    for(String disease : diseases){
+                        if(disease.equals(diseaseToChange)){
+                            diseaseFound = true;
+                            System.out.println("Nombre de la enfermedad actualizada: ");
+                            String newDisease = readString.nextLine();
+                            disease = newDisease;
+                            System.out.println("Enfermedad cambiada éxitosamente.");
+                        }
+                    }
+
+                    if(!diseaseFound){
+                        System.out.println("No se ha podido encontrar dicha enfermedad.");
+                    }
+                }
+                break;
+            
+            case 2:
+                if(diseases.isEmpty()){
+                    System.out.println("Este animal no presenta enfermedades.");
+                }
+                else{
+                    System.out.println("Ha elegido eliminar enfermedad.");
+                    System.out.println("Ingrese el nombre de la enfermedad que será eliminada: ");
+                    String diseaseToRemove = readString.nextLine();
+
+                    for(String disease : diseases){
+                        if(disease.equals(diseaseToRemove)){
+                            diseaseFound = true;
+                            diseases.remove(disease);
+                            System.out.println("Enfermedad eliminada con éxito.");
+                        }
+                    }
+
+                    if(!diseaseFound){
+                        System.out.println("No se ha podido encontrar dicha enfermedad.");
+                    }
+                }
+                break;
+
+            case 3:
+                System.out.println("Ha elegido añadir una nueva enfermedad.");
+                System.out.println("Ingrese el nombre de la nueva enfermedad: ");
+                String diseaseToAdd = readString.nextLine();
+
+                diseases.add(diseaseToAdd);
+                System.out.println("Enfermedad añadida con éxito.");
+                break;
+
+            default:
+                System.out.println("Ingrese una opción válida.");
+                break;
+        }
+    }
+
+    public String getFeedFrequency(){
+        return feedFrequency;
+    }
+
+    public void setFeedFrequency(String feedFrequency){
+        this.feedFrequency = feedFrequency;
+    }
+
+    public String getFeedType(){
+        return feedType;
+    }
     
+    public void setFeedType(String feedType){
+        this.feedType = feedType;
+    }
+
+    public boolean getHasVaccines(){
+        return hasVaccines;
+    }
+
+    public void setHasVaccines(boolean hasVaccines){
+        this.hasVaccines = hasVaccines;
+    }
 }
