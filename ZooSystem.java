@@ -91,7 +91,7 @@ public class ZooSystem {
                             zoo.modifyVisitor();
                             break;
                         case 3:
-                        System.out.println("Metodo modificar animal");
+                            zoo.modifyAnimal();
                             break;
                     }
 

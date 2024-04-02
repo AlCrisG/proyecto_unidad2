@@ -4,11 +4,12 @@ import java.util.Scanner;
 public class Animal {
     private Scanner readString = new Scanner(System.in);
     private String animalType, birthDate, arriveDate, feedFrequency, feedType;
-    private int weight, id;
+    private int id;
+    private double weight;
     private ArrayList<String> diseases = new ArrayList<>();
     private boolean hasVaccines;
 
-    public Animal(String animalType, String birthDate, String arriveDate, int weight, ArrayList<String> diseases, String feedFrequency, String feedType, boolean hasVaccines, int id){
+    public Animal(String animalType, String birthDate, String arriveDate, double weight, ArrayList<String> diseases, String feedFrequency, String feedType, boolean hasVaccines, int id){
         this.animalType = animalType;
         this.birthDate = birthDate;
         this.arriveDate = arriveDate;
@@ -49,11 +50,11 @@ public class Animal {
         this.arriveDate = arriveDate;
     }
 
-    public int getWeight(){
+    public double getWeight(){
         return weight;
     }
 
-    public void setWeight(int weight){
+    public void setWeight(double weight){
         this.weight = weight;
     }
 
