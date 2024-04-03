@@ -68,6 +68,7 @@ public class Animal {
             int i = 1;
             for(String disease : diseases){
                 System.out.printf("Enfermedad %s: %s%n", i, disease);
+                i++;
             }
             System.out.println("+---------------------+");
         }
@@ -155,8 +156,13 @@ public class Animal {
         this.feedType = feedType;
     }
 
-    public boolean getHasVaccines(){
-        return hasVaccines;
+    public String getHasVaccines(){
+        if(hasVaccines){
+            return "Si";
+        }
+        else{
+            return "No";
+        }
     }
 
     public void setHasVaccines(boolean hasVaccines){

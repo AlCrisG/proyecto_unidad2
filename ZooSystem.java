@@ -40,19 +40,19 @@ public class ZooSystem {
 
             switch (option) {
                 case 1:
-                System.out.println("+---------------------+");
-                System.out.println("|   MENU REGISTRAR    |");
-                System.out.println("+---------------------+");
-                System.out.println("| OPCION | DESCRIPCION|");
-                System.out.println("+---------------------+");
-                System.out.println("|   1    | Empleado   |");
-                System.out.println("|   2    | Visitante  |");
-                System.out.println("|   3    | Animal     |");
-                System.out.println("|   4    | Visita     |");
-                System.out.println("|   5    | Mantenimiento |");
-                System.out.println("+---------------------+");
-                System.out.print("Elige una opción: ");
-                int optionRegister = scanner.nextInt();
+                    System.out.println("+---------------------+");
+                    System.out.println("|   MENU REGISTRAR    |");
+                    System.out.println("+---------------------+");
+                    System.out.println("| OPCION | DESCRIPCION|");
+                    System.out.println("+---------------------+");
+                    System.out.println("|   1    | Empleado   |");
+                    System.out.println("|   2    | Visitante  |");
+                    System.out.println("|   3    | Animal     |");
+                    System.out.println("|   4    | Visita     |");
+                    System.out.println("|   5    | Mantenimiento |");
+                    System.out.println("+---------------------+");
+                    System.out.print("Elige una opción: ");
+                    int optionRegister = scanner.nextInt();
 
                     switch (optionRegister) {
                         case 1:
@@ -73,21 +73,20 @@ public class ZooSystem {
                         default:
                             System.out.println("Seleccione una opción válida.");
                     }
-
                     break;
+
                 case 2:
-                
-                System.out.println("+---------------------+");
-                System.out.println("|   MENU MODIFICAR    |");
-                System.out.println("+---------------------+");
-                System.out.println("| OPCION | DESCRIPCION|");
-                System.out.println("+---------------------+");
-                System.out.println("|   1    | Empleado   |");
-                System.out.println("|   2    | Visitante  |");
-                System.out.println("|   3    | Animal     |");
-                System.out.println("+---------------------+");
-                System.out.print("Elige una opción: ");
-                int optionModify = scanner.nextInt();
+                    System.out.println("+---------------------+");
+                    System.out.println("|   MENU MODIFICAR    |");
+                    System.out.println("+---------------------+");
+                    System.out.println("| OPCION | DESCRIPCION|");
+                    System.out.println("+---------------------+");
+                    System.out.println("|   1    | Empleado   |");
+                    System.out.println("|   2    | Visitante  |");
+                    System.out.println("|   3    | Animal     |");
+                    System.out.println("+---------------------+");
+                    System.out.print("Elige una opción: ");
+                    int optionModify = scanner.nextInt();
 
                     switch (optionModify) {
                         case 1:
@@ -102,12 +101,75 @@ public class ZooSystem {
                     }
 
                     break;
+
                 case 3:
-                System.out.println("xdx");
+                    System.out.println("+---------------------+");
+                    System.out.println("|    MENU ELIMINAR    |");
+                    System.out.println("+---------------------+");
+                    System.out.println("| OPCION | DESCRIPCION|");
+                    System.out.println("+---------------------+");
+                    System.out.println("|   1    | Empleado   |");
+                    System.out.println("|   2    | Visitante  |");
+                    System.out.println("|   3    | Animal     |");
+                    System.out.println("+---------------------+");
+                    System.out.print("Elige una opción: ");
+                    int optionDelete = scanner.nextInt();
+
+                    switch(optionDelete){
+                        case 1:
+                            zoo.deleteEmployee();
+                            break;
+                        
+                        case 2:
+                            zoo.deleteVisitor();
+                            break;
+
+                        case 3:
+                            zoo.deleteAnimal();
+                            break;
+
+                        default:
+                        System.out.println("Seleccione una opción válida.");
+                    }
+                    
                     break;
+                
                 case 4:
-                System.out.println("xd");
+                    System.out.println("+---------------------+");
+                    System.out.println("|   MENU CONSULTAR    |");
+                    System.out.println("+---------------------+");
+                    System.out.println("| OPCION | DESCRIPCION|");
+                    System.out.println("+---------------------+");
+                    System.out.println("|   1    | Empleado   |");
+                    System.out.println("|   2    | Visitante  |");
+                    System.out.println("|   3    | Animal     |");
+                    System.out.println("|   4    | Visita     |");
+                    System.out.println("|   5    | Mantenimiento |");
+                    System.out.println("+---------------------+");
+                    System.out.print("Elige una opción: ");
+                    int optionConsult = scanner.nextInt();
+
+                    switch (optionConsult) {
+                        case 1:
+                            zoo.consultEmployees();
+                            break;
+                        case 2:
+                            zoo.consultVisitors();
+                            break;
+                        case 3:
+                            zoo.consultAnimals();
+                            break;
+                        case 4:
+                            zoo.consultVisit();
+                            break;
+                        case 5:
+                            zoo.consultMaintenance();
+                            break;
+                        default:
+                            System.out.println("Seleccione una opción válida.");
+                    }
                     break;
+                
                 case 5:
                 System.out.println("Terminando sesion...");
                     System.exit(0);

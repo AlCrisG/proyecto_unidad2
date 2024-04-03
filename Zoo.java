@@ -658,4 +658,188 @@ public class Zoo {
 
         return thereAreMaintenanceEmployees;
     }
+
+    public void deleteEmployee(){
+        if(employees.isEmpty()){
+            System.out.println("No se han agregado empleados.");
+        }
+        else{
+            System.out.println("Ingrese el ID del empleado que desea eliminar: ");
+            int idEmployeeToDelete = readNumbers.nextInt();
+
+            boolean employeeToDeleteFound = false;
+            for(Employee employee : employees){
+                if(employee.getId() == idEmployeeToDelete){
+                    employeeToDeleteFound = true;
+                    if(employee.getIsInAVisit()){
+                        System.out.println("No se puede eliminar a este empleado debido a que está en una visita.");
+                    }
+                    else if(employee.getIsInAMaintenanceProcess()){
+                        System.out.println("No se puede eliminar a este empleado debido a que está en un proceso de mantenimiento.");
+                    }
+                    else{
+                        employees.remove(employee);
+                        System.out.println("Empleado borrado con éxito.");
+                    }
+                }
+            }
+            
+            if(!employeeToDeleteFound){
+                System.out.println("No se ha encontrado ningún empleado con ese ID.");
+            }
+        }
+    }
+
+    public void deleteVisitor(){
+        if(visitors.isEmpty()){
+            System.out.println("No se han agregado visitantes.");
+        }
+        else{
+            System.out.println("Ingrese el ID del visitante que desea eliminar: ");
+            int idVisitorToDelete = readNumbers.nextInt();
+
+            boolean visitorToDeleteFound = false;
+            for(Visitor visitor : visitors){
+                if(visitor.getId() == idVisitorToDelete){
+                    visitorToDeleteFound = true;
+                    if(visitor.getIsInAVisit()){
+                        System.out.println("No se puede eliminar a este visitante debido a que está en una visita.");
+                    }
+                    else{
+                        visitors.remove(visitor);
+                        System.out.println("Visitante borrado con éxito.");
+                    }
+                }
+            }
+            
+            if(!visitorToDeleteFound){
+                System.out.println("No se ha encontrado ningún visitante con ese ID.");
+            }
+        }
+    }
+
+    public void deleteAnimal(){
+        if(animals.isEmpty()){
+            System.out.println("No se han agregado animales.");
+        }
+        else{
+            System.out.println("Ingrese el ID del animal que desea eliminar: ");
+            int idAnimalToDelete = readNumbers.nextInt();
+
+            boolean animalToDeleteFound = false;
+            for(Animal animal : animals){
+                if(animal.getId() == idAnimalToDelete){
+                    animalToDeleteFound = true;
+                    if(animal.getIsInAMaintenanceProcess()){
+                        System.out.println("No se puede eliminar a este animal debido a que está en un proceso de mantenimiento.");
+                    }
+                    else{
+                        animals.remove(animal);
+                        System.out.println("Animal eliminado con éxito.");
+                    }
+                }
+            }
+
+            if(!animalToDeleteFound){
+                System.out.println("No se ha encontrado ningún animal con ese ID.");
+            }
+        }
+    }
+
+    public void consultEmployees(){
+        if(employees.isEmpty()){
+            System.out.println("No se han agregado empleados.");
+        }
+        else{
+            for(Employee employee : employees){
+                System.out.println("+--------------------------------------------+");
+                System.out.printf("ID del empleado: %s%n", employee.getId());
+                System.out.printf("Nombre: %s%n", employee.getName());
+                System.out.printf("Apellidos: %s%n", employee.getLastName());
+                System.out.printf("Fecha de nacimiento: %s%n", employee.getBirthDate());
+                System.out.printf("Fecha de ingreso: %s%n", employee.getEntryDate());
+                System.out.printf("RFC: %s%n", employee.getRfc());
+                System.out.printf("CURP: %s%n", employee.getCurp());
+                System.out.printf("Salario: %s%n", employee.getSalary());
+                System.out.printf("Horario: %s%n", employee.getWorkingHours());
+                System.out.printf("Rol: %s%n", employee.getRole());
+                System.out.println("+--------------------------------------------+");
+            }
+        }
+    }
+
+    public void consultVisitors(){
+        if(visitors.isEmpty()){
+            System.out.println("No se han agregado visitantes.");
+        }
+        else{
+            for(Visitor visitor : visitors){
+                System.out.println("+--------------------------------------------+");
+                System.out.printf("ID del visitante: %s%n", visitor.getId());
+                System.out.printf("Nombre: %s%n", visitor.getName());
+                System.out.printf("Apellidos: %s%n", visitor.getLastName());
+                System.out.printf("Fecha de nacimiento: %s%n", visitor.getBirthDate());
+                System.out.printf("CURP: %s%n", visitor.getCurp());
+                System.out.printf("Número de visitas: %s%n", visitor.getNumberOfVisits());
+                System.out.printf("Fecha de registro: %s%n", visitor.getRegisterDate());
+                System.out.println("+--------------------------------------------+");
+            }
+        }
+    }
+
+    public void consultAnimals(){
+        if(animals.isEmpty()){
+            System.out.println("No se han agregado animales.");
+        }
+        else{
+            for(Animal animal : animals){
+                System.out.println("+--------------------------------------------+");
+                System.out.printf("ID del animal: %s%n", animal.getId());
+                System.out.printf("Tipo de animal: %s%n", animal.getAnimalType());
+                System.out.printf("Fecha de nacimiento: %s%n", animal.getBirthDate());
+                System.out.printf("Fecha de llegada: %s%n", animal.getArriveDate());
+                System.out.printf("Peso: %s%n", animal.getWeight());
+                animal.getDiseases();
+                System.out.printf("Frecuencia de alimentación: %s%n", animal.getFeedFrequency());
+                System.out.printf("Tipo de alimentación: %s%n", animal.getFeedType());
+                System.out.printf("Cuenta con vacunas: %s%n", animal.getHasVaccines());
+                System.out.println("+--------------------------------------------+");
+            }
+        }
+    }
+
+    public void consultVisit(){
+        if(visits.isEmpty()){
+            System.out.println("No se han agregado visitas.");
+        }
+        else{
+            for(Visit visit : visits){
+                System.out.println("+--------------------------------------------+");
+                System.out.printf("Guía a cargo: %s%n", visit.getGuideInCharge());
+                visit.getVisitors();
+                System.out.printf("Costo total de la visita: %s%n", visit.getTotalCost());
+                System.out.printf("Fecha de la visita: %s%n", visit.getVisitDate());
+                System.out.printf("Cantidad de niños: %s%n", visit.getChildrenQuantity());
+                System.out.printf("Cantidad de adultos: %s%n", visit.getAdultsQuantity());
+                System.out.println("+--------------------------------------------+");
+            }
+        }
+    }
+
+    public void consultMaintenance(){
+        if(maintenance.isEmpty()){
+            System.out.println("No se han añadido procesos de mantenimiento.");
+        }
+        else{
+            for(Maintenance process : maintenance){
+                System.out.println("+--------------------------------------------+");
+                System.out.printf("Empleado a cargo: %s%n", process.getEmployeeInCharge());
+                System.out.printf("ID del animal: %s%n", process.getAnimalId());
+                System.out.printf("Proceso que se realizó: %s%n", process.getProcessName());
+                System.out.printf("Fecha del proceso: %s%n", process.getDate());
+                System.out.printf("Observaciones: %s%n", process.getObservations());
+                System.out.println("+--------------------------------------------+");
+            }
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class Visit {
         }
         else{
             int[] date = new int[3]; 
-            date = getVisitDate();
+            date = getVectorVisitDate();
             for(Visitor visitor : visitors){
                 visitor.setIsAnAdult(false);//Reinicio en caso de que la fecha cambie hacia atrás
                 int[] visitorBirthDate = new int[3];
@@ -51,7 +51,7 @@ public class Visit {
         return adultsQuantity;
     }
 
-    private int[] getVisitDate(){
+    private int[] getVectorVisitDate(){
         int[] date = new int[3];
         date[0] = Integer.parseInt(visitDate.substring(0, 2));
         date[1] = Integer.parseInt(visitDate.substring(3, 5));
@@ -97,5 +97,23 @@ public class Visit {
 
     public double getTotalCost(){
         return totalCost;
+    }
+
+    public String getVisitDate(){
+        return visitDate;
+    }
+
+    public String getGuideInCharge(){
+        return guideInCharge.getName();
+    }
+
+    public void getVisitors(){
+        System.out.println("+-----------------VISITANTES-----------------+");
+        for(Visitor visitor : visitors){
+            System.out.printf("ID del visitante: %s%n", visitor.getId());
+            System.out.printf("Nombre del visitante: %s%n", visitor.getName());
+            System.out.printf("Apellidos del visitante: %s%n", visitor.getLastName());
+            System.out.println("+--------------------------------------------+");
+        }
     }
 }

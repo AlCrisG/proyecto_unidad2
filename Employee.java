@@ -49,7 +49,15 @@ public class Employee{
     }
 
     public void setRole(String role) {
-        this.role = role;
+        if(getIsInAMaintenanceProcess() && hasMaintenanceRole()){
+            System.out.println("No se puede cambiar el rol de empleados que estén en algún proceso de mantenimiento.");
+        }
+        else if(getIsInAVisit() && isGuide()){
+            System.out.println("No se puede cambiar el rol de guías que estén en alguna visita.");
+        }
+        else{
+            this.role = role;
+        }
     }
 
     public double getSalary() {
