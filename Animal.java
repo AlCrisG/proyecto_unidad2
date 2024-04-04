@@ -20,7 +20,7 @@ public class Animal {
         this.feedType = feedType;
         this.hasVaccines = hasVaccines;
         this.id = id;
-        System.out.println(id);//////////////SOLO ES PARA PROBAR, HAY Q BORRARLO DESPUÉS XD
+        System.out.printf("Animal registrado con éxito. ID: %s%n", id);
     }
 
     public int getId(){

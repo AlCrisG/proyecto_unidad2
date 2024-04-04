@@ -17,7 +17,7 @@ public class Employee{
         this.salary = salary;
         this.workingHours = workingHours;
         this.role = role;
-        System.out.println(id);//////////////SOLO ES PARA PROBAR, HAY Q BORRARLO DESPUÉS XD
+        System.out.printf("Empleado registrado con éxito. ID: %s%n", id);
     }
 
     public String getEntryDate() {
@@ -110,10 +110,6 @@ public class Employee{
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isGuide(){

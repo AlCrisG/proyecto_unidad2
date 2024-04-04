@@ -16,7 +16,7 @@ public class Visitor{
         this.id = id;
         this.numberOfVisits = 0;
         this.registerDate = registerDate;
-        System.out.println(id);//////////////SOLO ES PARA PROBAR, HAY Q BORRARLO DESPUÉS XD
+        System.out.printf("Visitante registrado con éxito. ID: %s%n", id);
     }
 
     public int getNumberOfVisits() {
@@ -96,10 +96,6 @@ public class Visitor{
     }
 
 
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean getIsAnAdult(){
         return isAnAdult;
