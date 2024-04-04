@@ -74,69 +74,41 @@ public class Animal {
         }
     }
 
-    public void setDiseases(int option){
+
+    public void eliminateDiseases(String animalDiseaseEliminate){
         boolean diseaseFound = false;
-        switch(option){
-            case 1:
-                if(diseases.isEmpty()){
-                    System.out.println("Este animal no presenta enfermedades.");
-                }
-                else{
-                    System.out.println("Ha elegido cambiar una enfermedad.");
-                    System.out.println("Ingrese el nombre de la enfermedad a cambiar: ");
-                    String diseaseToChange = readString.nextLine();
                     
-                    for(String disease : diseases){
-                        if(disease.equals(diseaseToChange)){
-                            diseaseFound = true;
-                            System.out.println("Nombre de la enfermedad actualizada: ");
-                            String newDisease = readString.nextLine();
-                            disease = newDisease;
-                            System.out.println("Enfermedad cambiada éxitosamente.");
-                        }
-                    }
 
-                    if(!diseaseFound){
-                        System.out.println("No se ha podido encontrar dicha enfermedad.");
-                    }
-                }
+        for (String disease : diseases) {
+            if (disease.equalsIgnoreCase(animalDiseaseEliminate)) {
+                diseaseFound = true;
+                diseases.remove(animalDiseaseEliminate);
+                System.out.println("Enfermedad eliminada éxitosamente.");
                 break;
-            
-            case 2:
-                if(diseases.isEmpty()){
-                    System.out.println("Este animal no presenta enfermedades.");
-                }
-                else{
-                    System.out.println("Ha elegido eliminar enfermedad.");
-                    System.out.println("Ingrese el nombre de la enfermedad que será eliminada: ");
-                    String diseaseToRemove = readString.nextLine();
+            }
+        }
 
-                    for(String disease : diseases){
-                        if(disease.equals(diseaseToRemove)){
-                            diseaseFound = true;
-                            diseases.remove(disease);
-                            System.out.println("Enfermedad eliminada con éxito.");
-                        }
-                    }
+        if (!diseaseFound) {
+            System.out.println("No se ha podido encontrar dicha enfermedad.");
+        }
+    }
+    public void setDiseases(String animalDiseaseModif){
+        boolean diseaseFound = false;
+                    
 
-                    if(!diseaseFound){
-                        System.out.println("No se ha podido encontrar dicha enfermedad.");
-                    }
-                }
-                break;
+        for (String disease : diseases) {
+            if (disease.equalsIgnoreCase(animalDiseaseModif)) {
+                diseaseFound = true;
+                System.out.println("Nombre de la enfermedad actualizada: ");
+                String newDisease = readString.nextLine();
+                int index = diseases.indexOf(disease); 
+                diseases.set(index, newDisease); 
+                System.out.println("Enfermedad cambiada éxitosamente.");
+            }
+        }
 
-            case 3:
-                System.out.println("Ha elegido añadir una nueva enfermedad.");
-                System.out.println("Ingrese el nombre de la nueva enfermedad: ");
-                String diseaseToAdd = readString.nextLine();
-
-                diseases.add(diseaseToAdd);
-                System.out.println("Enfermedad añadida con éxito.");
-                break;
-
-            default:
-                System.out.println("Ingrese una opción válida.");
-                break;
+        if (!diseaseFound) {
+            System.out.println("No se ha podido encontrar dicha enfermedad.");
         }
     }
 

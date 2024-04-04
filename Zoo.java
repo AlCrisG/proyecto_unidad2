@@ -10,6 +10,7 @@ public class Zoo {
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visit> visits = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<String> listDiseases = new ArrayList<>();
     private ArrayList<Maintenance> maintenance = new ArrayList<>();
     private boolean validAnswer = false;
     private boolean hasVaccines = false;
@@ -93,7 +94,7 @@ public class Zoo {
         System.out.println("Ingrese el peso del animal: ");
         double weight = readNumbers.nextDouble();
 
-        ArrayList<String> listDiseases = new ArrayList<>();
+        
         boolean validAnswer1 = false;
         do{
             System.out.println("¿El animal presenta alguna enfermedad? [S/N]: ");
@@ -426,7 +427,63 @@ public class Zoo {
 
                             case 5:
                             validAnswer = true;
-                                //Ahorita lo hago xd
+                            animal.getDiseases();
+
+                            System.out.println("+---------------------+");
+                            System.out.println("| MODIFICAR ENFERMEDADES |");
+                            System.out.println("+----------------------+");
+                            System.out.println("| OPCION | DESCRIPCION |");
+                            System.out.println("+----------------------+");
+                            System.out.println("|   1    | Agregar |");
+                            System.out.println("|   2    | Modificar |");
+                            System.out.println("|   3    | Eliminar |");
+                            System.out.println("+---------------------+");
+                            System.out.println("Elija una opción: ");
+                            int optionModifDisease = readNumbers.nextInt();
+
+                            switch (optionModifDisease) {
+                                case 1:
+                                boolean repeat = false;
+                                boolean validAnswer2 = false;
+                                do{
+                                    do{
+                                        System.out.println("Nombre de la enfermedad: ");
+                                        String disease = readString.nextLine();
+                                        listDiseases.add(disease);
+                                        System.out.println("Enfermedad añadida con éxito.");
+
+                                        System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
+                                        String hasMoreDiseases = readString.nextLine().toLowerCase();
+
+                                            if(hasMoreDiseases.equals("s")){
+                                                validAnswer2 = true;
+                                                repeat = true;
+                                            }
+                                            else if(hasMoreDiseases.equals("n")){
+                                                validAnswer2 = true;
+                                                repeat = false;
+                                            }
+                                            else{
+                                                System.out.println("Ingrese una opción válida.");
+                                            }
+                                        } while(!validAnswer2);
+                                    }while(repeat);
+                                    
+                                    break;
+                                case 2:
+                                System.out.println("Ingrese la enfermedad para modificar: ");
+                                String animalDiseaseModif = readString.nextLine();
+                                    animal.setDiseases(animalDiseaseModif); 
+                                break;
+                                case 3:
+                                System.out.println("Ingrese la enfermedad para eliminar: ");
+                                String animalDiseaseEliminate = readString.nextLine();
+                                    animal.eliminateDiseases(animalDiseaseEliminate);
+                                break;
+                                default:
+                                System.out.println("Opción no valida");
+                                    break;
+                            }                               
                                 break;
                             
                             case 6:
