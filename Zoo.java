@@ -170,16 +170,28 @@ public class Zoo {
             for(Employee employee : employees){
                 if(employee.getId() == id){
                     repetido = true;
+                    id = ran.nextInt(100, 9999);
+                }
+                else{
+                    repetido = false;
                 }
             }
             for(Visitor visitor : visitors){
                 if(visitor.getId() == id){
                     repetido = true;
+                    id = ran.nextInt(100, 9999);
+                }
+                else{
+                    repetido = false;
                 }
             }
             for(Animal animal : animals){
                 if(animal.getId() == id){
                     repetido = true;
+                    id = ran.nextInt(100, 9999);
+                }
+                else{
+                    repetido = false;
                 }
             }
         } while(repetido);
