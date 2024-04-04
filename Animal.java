@@ -74,6 +74,14 @@ public class Animal {
         }
     }
 
+    public void addDisease(ArrayList<String> diseases){
+        this.diseases = diseases;
+    }
+
+    public ArrayList<String> getArrayDiseases(){
+        return diseases;
+    }
+
 
     public void eliminateDiseases(String animalDiseaseEliminate){
         boolean diseaseFound = false;

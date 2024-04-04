@@ -10,7 +10,6 @@ public class Zoo {
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visit> visits = new ArrayList<>();
     private ArrayList<Animal> animals = new ArrayList<>();
-    private ArrayList<String> listDiseases = new ArrayList<>();
     private ArrayList<Maintenance> maintenance = new ArrayList<>();
     private boolean validAnswer = false;
     private boolean hasVaccines = false;
@@ -96,6 +95,7 @@ public class Zoo {
 
         
         boolean validAnswer1 = false;
+        ArrayList<String> listDiseases = new ArrayList<>();
         do{
             System.out.println("¿El animal presenta alguna enfermedad? [S/N]: ");
             String hasDiseases = readString.nextLine().toLowerCase();
@@ -439,7 +439,8 @@ public class Zoo {
 
                             case 5:
                             validAnswer = true;
-                            animal.getDiseases();
+                            ArrayList<String> listDiseases = new ArrayList<>();
+                            listDiseases = animal.getArrayDiseases();
 
                             System.out.println("+---------------------+");
                             System.out.println("| MODIFICAR ENFERMEDADES |");
@@ -462,6 +463,7 @@ public class Zoo {
                                         System.out.println("Nombre de la enfermedad: ");
                                         String disease = readString.nextLine();
                                         listDiseases.add(disease);
+                                        animal.addDisease(listDiseases);
                                         System.out.println("Enfermedad añadida con éxito.");
 
                                         System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
