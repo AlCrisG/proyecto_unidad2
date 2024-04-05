@@ -108,9 +108,20 @@ public class Zoo {
                     do{
                         System.out.println("Nombre de la enfermedad: ");
                         String disease = readString.nextLine();
-                        listDiseases.add(disease);
-                        System.out.println("Enfermedad añadida con éxito.");
+                        boolean repeated = false;
 
+                        for(String diseaseListed : listDiseases){
+                            if(diseaseListed.equals(disease)){
+                                repeated = true;
+                                System.out.println("Esa enfermedad ya ha sido añadida.");
+                            }
+                        }
+
+                        if(!repeated){
+                            listDiseases.add(disease);
+                            System.out.println("Enfermedad añadida con éxito.");
+                        }
+                        
                         System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
                         String hasMoreDiseases = readString.nextLine().toLowerCase();
 
@@ -210,21 +221,22 @@ public class Zoo {
             for(Employee employee : employees){
                 if(employee.getId()==employeeId){
                     employeeFound = true;
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU MODIFICAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Nombre     |");
-                    System.out.println("|   2    | Apellidos  |");
-                    System.out.println("|   3    | Fecha de nacimiento (dd/mm/aaaa) |");
-                    System.out.println("|   4    | Fecha de ingreso (dd/mm/aaaa) |");
-                    System.out.println("|   5    | RFC        |");
-                    System.out.println("|   6    | CURP       |");
-                    System.out.println("|   7    | Salario    |");
-                    System.out.println("|   8    | Horario de trabajo |");
-                    System.out.println("|   9    | Rol        |");
-                    System.out.println("+---------------------+");
+                    System.out.println("+------------------------------+");
+                    System.out.println("|        MENU MODIFICAR        |");
+                    System.out.println("+------------------------------+");
+                    System.out.println("| OPCION | DESCRIPCION         |");
+                    System.out.println("+------------------------------+");
+                    System.out.println("|   1    | Nombre              |");
+                    System.out.println("|   2    | Apellidos           |");
+                    System.out.println("|   3    | Fecha de nacimiento |");
+                    System.out.println("|   4    | Fecha de ingreso    |");
+                    System.out.println("|   5    | RFC                 |");
+                    System.out.println("|   6    | CURP                |");
+                    System.out.println("|   7    | Salario             |");
+                    System.out.println("|   8    | Horario de trabajo  |");
+                    System.out.println("|   9    | Rol                 |");
+                    System.out.println("|   0    | Regresar al inicio  |");
+                    System.out.println("+------------------------------+");
 
                     validAnswer = false;
                     do{
@@ -287,6 +299,10 @@ public class Zoo {
                                 employee.setRole(roleModif);
                                 break;
 
+                            case 0:
+                                validAnswer = true;
+                                break;
+
                             default:
                             System.out.println("Ingrese una opción válida.");
                             break;
@@ -313,17 +329,18 @@ public class Zoo {
             for(Visitor visitor : visitors){
                 if(visitor.getId()==visitorId){
                     visitorFound = true;
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU MODIFICAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Nombre     |");
-                    System.out.println("|   2    | Apellidos  |");
-                    System.out.println("|   3    | Fecha de nacimiento (dd/mm/aaaa) |");
-                    System.out.println("|   4    | Fecha de registro (dd/mm/aaaa) |");
-                    System.out.println("|   5    | CURP       |");
-                    System.out.println("+---------------------+");
+                    System.out.println("+------------------------------+");
+                    System.out.println("|        MENU MODIFICAR        |");
+                    System.out.println("+------------------------------+");
+                    System.out.println("| OPCION | DESCRIPCION         |");
+                    System.out.println("+------------------------------+");
+                    System.out.println("|   1    | Nombre              |");
+                    System.out.println("|   2    | Apellidos           |");
+                    System.out.println("|   3    | Fecha de nacimiento |");
+                    System.out.println("|   4    | Fecha de registro   |");
+                    System.out.println("|   5    | CURP                |");
+                    System.out.println("|   6    | Regresar al inicio  |");
+                    System.out.println("+------------------------------+");
 
                     validAnswer = false;
                     do{
@@ -362,6 +379,10 @@ public class Zoo {
                                 visitor.setCurp(curpVisitorModif);
                                 break;
 
+                            case 6:
+                                validAnswer = true;
+                                break;
+
                             default:
                             System.out.println("Ingrese una opción válida.");
                             break;
@@ -388,20 +409,21 @@ public class Zoo {
             for(Animal animal : animals){
                 if(animal.getId() == animalId){
                     animalFound = true;
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU MODIFICAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Tipo de animal |");
-                    System.out.println("|   2    | Fecha de nacimiento (dd/mm/aaaa) |");
-                    System.out.println("|   3    | Fecha de llegada (dd/mm/aaaa) |");
-                    System.out.println("|   4    | Peso       |");
-                    System.out.println("|   5    | Enfermedad |");
+                    System.out.println("+-------------------------------------+");
+                    System.out.println("|            MENU MODIFICAR           |");
+                    System.out.println("+-------------------------------------+");
+                    System.out.println("| OPCION | DESCRIPCION                |");
+                    System.out.println("+-------------------------------------+");
+                    System.out.println("|   1    | Tipo de animal             |");
+                    System.out.println("|   2    | Fecha de nacimiento        |");
+                    System.out.println("|   3    | Fecha de llegada           |");
+                    System.out.println("|   4    | Peso                       |");
+                    System.out.println("|   5    | Enfermedad                 |");
                     System.out.println("|   6    | Frecuencia de alimentación |");
-                    System.out.println("|   7    | Tipo de alimentación |");
-                    System.out.println("|   8    | Cuenta con vacunas |");
-                    System.out.println("+---------------------+");
+                    System.out.println("|   7    | Tipo de alimentación       |");
+                    System.out.println("|   8    | Cuenta con vacunas         |");
+                    System.out.println("|   9    | Regresar al inicio         |");
+                    System.out.println("+-------------------------------------+");
 
                     validAnswer = false;
                     do{
@@ -441,33 +463,48 @@ public class Zoo {
                             validAnswer = true;
                             ArrayList<String> listDiseases = new ArrayList<>();
                             listDiseases = animal.getArrayDiseases();
+                            boolean validAnswer1;
 
-                            System.out.println("+---------------------+");
-                            System.out.println("| MODIFICAR ENFERMEDADES |");
-                            System.out.println("+----------------------+");
-                            System.out.println("| OPCION | DESCRIPCION |");
-                            System.out.println("+----------------------+");
-                            System.out.println("|   1    | Agregar |");
-                            System.out.println("|   2    | Modificar |");
-                            System.out.println("|   3    | Eliminar |");
-                            System.out.println("+---------------------+");
-                            System.out.println("Elija una opción: ");
-                            int optionModifDisease = readNumbers.nextInt();
+                            do{
+                                validAnswer1 = true;
+                                System.out.println("+------------------------+");
+                                System.out.println("| MODIFICAR ENFERMEDADES |");
+                                System.out.println("+------------------------+");
+                                System.out.println("| OPCION | DESCRIPCION   |");
+                                System.out.println("+------------------------+");
+                                System.out.println("|   1    | Agregar       |");
+                                System.out.println("|   2    | Modificar     |");
+                                System.out.println("|   3    | Eliminar      |");
+                                System.out.println("|   4    | Regresar      |");
+                                System.out.println("+------------------------+");
+                                System.out.println("Elige una opción: ");
+                                int optionModifDisease = readNumbers.nextInt();
 
-                            switch (optionModifDisease) {
-                                case 1:
-                                boolean repeat = false;
-                                boolean validAnswer2 = false;
-                                do{
+                                switch (optionModifDisease) {
+                                    case 1:
+                                    boolean repeat = false;
+                                    boolean validAnswer2 = false;
                                     do{
-                                        System.out.println("Nombre de la enfermedad: ");
-                                        String disease = readString.nextLine();
-                                        listDiseases.add(disease);
-                                        animal.addDisease(listDiseases);
-                                        System.out.println("Enfermedad añadida con éxito.");
+                                        do{
+                                            System.out.println("Nombre de la enfermedad: ");
+                                            String disease = readString.nextLine();
+                                            boolean repeated = false;
 
-                                        System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
-                                        String hasMoreDiseases = readString.nextLine().toLowerCase();
+                                            for(String diseaseListed : listDiseases){
+                                                if(diseaseListed.equals(disease)){
+                                                    repeated = true;
+                                                    System.out.println("Esa enfermedad ya ha sido añadida.");
+                                                }
+                                            }
+
+                                            if(!repeated){
+                                                listDiseases.add(disease);
+                                                animal.addDisease(listDiseases);
+                                                System.out.println("Enfermedad añadida con éxito.");
+                                            }
+
+                                            System.out.println("¿Desea agregar otra enfermedad? [S/N]: ");
+                                            String hasMoreDiseases = readString.nextLine().toLowerCase();
 
                                             if(hasMoreDiseases.equals("s")){
                                                 validAnswer2 = true;
@@ -481,9 +518,9 @@ public class Zoo {
                                                 System.out.println("Ingrese una opción válida.");
                                             }
                                         } while(!validAnswer2);
-                                    }while(repeat);
-                                    
-                                    break;
+                                    }while(repeat);    
+                                break;
+
                                 case 2:
                                 System.out.println("Ingrese la enfermedad para modificar: ");
                                 String animalDiseaseModif = readString.nextLine();
@@ -494,10 +531,16 @@ public class Zoo {
                                 String animalDiseaseEliminate = readString.nextLine();
                                     animal.eliminateDiseases(animalDiseaseEliminate);
                                 break;
+
+                                case 4:
+                                    break;
+
                                 default:
+                                validAnswer1 = false;
                                 System.out.println("Opción no valida");
                                     break;
-                            }                               
+                            }             
+                        }while(!validAnswer1);                  
                                 break;
                             
                             case 6:
@@ -534,6 +577,10 @@ public class Zoo {
                                     }
                                 } while(!validAnswerVaccines);
                                 animal.setHasVaccines(hasVaccines);
+                                break;
+
+                            case 9:
+                                validAnswer = true;
                                 break;
 
                             default:

@@ -24,6 +24,8 @@ public class ZooSystem {
     private void executeMenu() {
 
         do {
+            boolean valid_answer = true;
+
             System.out.println("+---------------------+");
             System.out.println("|        MENU         |");
             System.out.println("+---------------------+");
@@ -38,143 +40,169 @@ public class ZooSystem {
             System.out.print("Elige una opción: ");
                 int option = scanner.nextInt();
 
-            switch (option) {
-                case 1:
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU REGISTRAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Empleado   |");
-                    System.out.println("|   2    | Visitante  |");
-                    System.out.println("|   3    | Animal     |");
-                    System.out.println("|   4    | Visita     |");
-                    System.out.println("|   5    | Mantenimiento |");
-                    System.out.println("+---------------------+");
-                    System.out.print("Elige una opción: ");
-                    int optionRegister = scanner.nextInt();
+            do{
+                valid_answer = true;
+                switch (option) {
+                    case 1:
+                        System.out.println("+------------------------+");
+                        System.out.println("|     MENU REGISTRAR     |");
+                        System.out.println("+------------------------+");
+                        System.out.println("| OPCION | DESCRIPCION   |");
+                        System.out.println("+------------------------+");
+                        System.out.println("|   1    | Empleado      |");
+                        System.out.println("|   2    | Visitante     |");
+                        System.out.println("|   3    | Animal        |");
+                        System.out.println("|   4    | Visita        |");
+                        System.out.println("|   5    | Mantenimiento |");
+                        System.out.println("|   6    | Regresar      |");
+                        System.out.println("+------------------------+");
+                        System.out.print("Elige una opción: ");
+                        int optionRegister = scanner.nextInt();
 
-                    switch (optionRegister) {
-                        case 1:
-                            zoo.addEmployee();
-                            break;
-                        case 2:
-                            zoo.addVisitor();
-                            break;
-                        case 3:
-                            zoo.addAnimal();
-                            break;
-                        case 4:
-                            zoo.registerVisit();
-                            break;
-                        case 5:
-                            zoo.registerMaintenance();
-                            break;
-                        default:
-                            System.out.println("Seleccione una opción válida.");
-                    }
-                    break;
+                        switch (optionRegister) {
+                            case 1:
+                                zoo.addEmployee();
+                                break;
+                            case 2:
+                                zoo.addVisitor();
+                                break;
+                            case 3:
+                                zoo.addAnimal();
+                                break;
+                            case 4:
+                                zoo.registerVisit();
+                                break;
+                            case 5:
+                                zoo.registerMaintenance();
+                                break;
+                            case 6:
+                                break;
+                            default:
+                                valid_answer = false;
+                                System.out.println("Seleccione una opción válida.");
+                                break;
+                        }
+                        break;
 
-                case 2:
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU MODIFICAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Empleado   |");
-                    System.out.println("|   2    | Visitante  |");
-                    System.out.println("|   3    | Animal     |");
-                    System.out.println("+---------------------+");
-                    System.out.print("Elige una opción: ");
-                    int optionModify = scanner.nextInt();
+                    case 2:
+                        System.out.println("+---------------------+");
+                        System.out.println("|   MENU MODIFICAR    |");
+                        System.out.println("+---------------------+");
+                        System.out.println("| OPCION | DESCRIPCION|");
+                        System.out.println("+---------------------+");
+                        System.out.println("|   1    | Empleado   |");
+                        System.out.println("|   2    | Visitante  |");
+                        System.out.println("|   3    | Animal     |");
+                        System.out.println("|   4    | Regresar   |");
+                        System.out.println("+---------------------+");
+                        System.out.print("Elige una opción: ");
+                        int optionModify = scanner.nextInt();
 
-                    switch (optionModify) {
-                        case 1:
-                            zoo.modifyEmployee();
-                            break;
-                        case 2:
-                            zoo.modifyVisitor();
-                            break;
-                        case 3:
-                            zoo.modifyAnimal();
-                            break;
-                    }
+                        switch (optionModify) {
+                            case 1:
+                                zoo.modifyEmployee();
+                                break;
+                            case 2:
+                                zoo.modifyVisitor();
+                                break;
+                            case 3:
+                                zoo.modifyAnimal();
+                                break;
+                            case 4:
+                                break;
+                            default:
+                                valid_answer = false;
+                                System.out.println("Seleccione una opción válida.");
+                                break;
+                        }
 
-                    break;
+                        break;
 
-                case 3:
-                    System.out.println("+---------------------+");
-                    System.out.println("|    MENU ELIMINAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Empleado   |");
-                    System.out.println("|   2    | Visitante  |");
-                    System.out.println("|   3    | Animal     |");
-                    System.out.println("+---------------------+");
-                    System.out.print("Elige una opción: ");
-                    int optionDelete = scanner.nextInt();
+                    case 3:
+                        System.out.println("+---------------------+");
+                        System.out.println("|    MENU ELIMINAR    |");
+                        System.out.println("+---------------------+");
+                        System.out.println("| OPCION | DESCRIPCION|");
+                        System.out.println("+---------------------+");
+                        System.out.println("|   1    | Empleado   |");
+                        System.out.println("|   2    | Visitante  |");
+                        System.out.println("|   3    | Animal     |");
+                        System.out.println("|   4    | Regresar   |");
+                        System.out.println("+---------------------+");
+                        System.out.print("Elige una opción: ");
+                        int optionDelete = scanner.nextInt();
 
-                    switch(optionDelete){
-                        case 1:
-                            zoo.deleteEmployee();
-                            break;
+                        switch(optionDelete){
+                            case 1:
+                                zoo.deleteEmployee();
+                                break;
+                            
+                            case 2:
+                                zoo.deleteVisitor();
+                                break;
+
+                            case 3:
+                                zoo.deleteAnimal();
+                                break;
+
+                            case 4:
+                                break;
+
+                            default:
+                                valid_answer = false;
+                                System.out.println("Seleccione una opción válida.");
+                                break;
+                        }
                         
-                        case 2:
-                            zoo.deleteVisitor();
-                            break;
-
-                        case 3:
-                            zoo.deleteAnimal();
-                            break;
-
-                        default:
-                        System.out.println("Seleccione una opción válida.");
-                    }
+                        break;
                     
-                    break;
-                
-                case 4:
-                    System.out.println("+---------------------+");
-                    System.out.println("|   MENU CONSULTAR    |");
-                    System.out.println("+---------------------+");
-                    System.out.println("| OPCION | DESCRIPCION|");
-                    System.out.println("+---------------------+");
-                    System.out.println("|   1    | Empleado   |");
-                    System.out.println("|   2    | Visitante  |");
-                    System.out.println("|   3    | Animal     |");
-                    System.out.println("|   4    | Visita     |");
-                    System.out.println("|   5    | Mantenimiento |");
-                    System.out.println("+---------------------+");
-                    System.out.print("Elige una opción: ");
-                    int optionConsult = scanner.nextInt();
+                    case 4:
+                        System.out.println("+------------------------+");
+                        System.out.println("|     MENU CONSULTAR     |");
+                        System.out.println("+------------------------+");
+                        System.out.println("| OPCION | DESCRIPCION   |");
+                        System.out.println("+------------------------+");
+                        System.out.println("|   1    | Empleado      |");
+                        System.out.println("|   2    | Visitante     |");
+                        System.out.println("|   3    | Animal        |");
+                        System.out.println("|   4    | Visita        |");
+                        System.out.println("|   5    | Mantenimiento |");
+                        System.out.println("|   6    | Regresar      |");
+                        System.out.println("+------------------------+");
+                        System.out.print("Elige una opción: ");
+                        int optionConsult = scanner.nextInt();
 
-                    switch (optionConsult) {
-                        case 1:
-                            zoo.consultEmployees();
-                            break;
-                        case 2:
-                            zoo.consultVisitors();
-                            break;
-                        case 3:
-                            zoo.consultAnimals();
-                            break;
-                        case 4:
-                            zoo.consultVisit();
-                            break;
-                        case 5:
-                            zoo.consultMaintenance();
-                            break;
-                        default:
-                            System.out.println("Seleccione una opción válida.");
-                    }
-                    break;
-                
-                case 5:
-                System.out.println("Terminando sesion...");
-                    System.exit(0);
-                    break;
-            }
+                        switch (optionConsult) {
+                            case 1:
+                                zoo.consultEmployees();
+                                break;
+                            case 2:
+                                zoo.consultVisitors();
+                                break;
+                            case 3:
+                                zoo.consultAnimals();
+                                break;
+                            case 4:
+                                zoo.consultVisit();
+                                break;
+                            case 5:
+                                zoo.consultMaintenance();
+                                break;
+                            case 6:
+                                break;
+                            default:
+                                valid_answer = false;
+                                System.out.println("Seleccione una opción válida.");
+                                break;
+                        }
+                        break;
+                    
+                    case 5:
+                    System.out.println("Terminando sesion...");
+                        System.exit(0);
+                        break;
+                }
+            } while(!valid_answer);
         } while(true);
     }
 }
