@@ -708,13 +708,13 @@ public class Zoo {
                 System.out.println("No se han añadido animales.");
             }
             else{
-                System.out.println("Ingrese el ID del empleado a cargo: ");
-                int employeeInChargeId = readNumbers.nextInt();
-                
                 Employee employeeInCharge = null;
                 boolean employeeFoundMaintenance = false;
 
                 do{
+                    System.out.println("Ingrese el ID del empleado a cargo: ");
+                    int employeeInChargeId = readNumbers.nextInt();
+                
                     for(Employee employee : employees){
                         if(employee.getId() == employeeInChargeId && employee.hasMaintenanceRole()){
                             employee.setIsInAMaintenanceProcess(true);
@@ -728,13 +728,13 @@ public class Zoo {
                     }
                 }while(!employeeFoundMaintenance);
 
-                System.out.println("Ingrese el ID del animal involucrado: ");
-                int animalIdMaintenance = readNumbers.nextInt(); 
-
                 Animal animalMaintenance = null;
                 boolean animalFoundMaintenance = false;
 
                 do{
+                    System.out.println("Ingrese el ID del animal involucrado: ");
+                    int animalIdMaintenance = readNumbers.nextInt(); 
+
                     for(Animal animal : animals){
                         if(animal.getId() == animalIdMaintenance){
                             animal.setIsInAMaintenanceProcess(true);
